@@ -31,9 +31,11 @@ a {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--accent-orange);
   border-radius: 4px;
@@ -61,6 +63,22 @@ a {
   color: var(--accent-orange);
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+.add-btn {
+  background: var(--accent-orange);
+  color: var(--bg-dark);
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border: 2px solid var(--accent-orange);
+}
+
+.add-btn:hover {
+  background: transparent;
+  color: var(--accent-orange);
 }
 
 /* Filters */
@@ -218,7 +236,9 @@ a {
   font-weight: bold;
 }
 
-.form-input, .form-select, .form-textarea {
+.form-input,
+.form-select,
+.form-textarea {
   width: 100%;
   padding: 0.8rem;
   background: var(--bg-card);
@@ -252,9 +272,10 @@ a {
     gap: 1rem;
     text-align: center;
   }
-  
+
   .filter-btn {
-    padding: 0.8rem 1.5rem; /* Larger for Steam Overlay */
+    padding: 0.8rem 1.5rem;
+    /* Larger for Steam Overlay */
     font-size: 1rem;
   }
 }
