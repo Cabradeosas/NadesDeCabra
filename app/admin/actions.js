@@ -112,3 +112,85 @@ export async function deleteUtility(id) {
   revalidatePath("/");
   revalidatePath("/admin/manage");
 }
+
+// Community Submissions Actions
+export async function submitCommunityUtility(formData) {
+  const title = formData.get("title");
+  const map = formData.get("map");
+  const side = formData.get("side");
+  const site = formData.get("site");
+  const type = formData.get("type");
+  const mouse_click = formData.get("mouse_click");
+  const stance = formData.get("stance");
+  const movement = formData.get("movement");
+  const video_url = formData.get("video_url");
+  const description = formData.get("description");
+
+  try {
+    await sql`
+      INSERT INTO communityUtils (
+        title, map, side, site, type, mouse_click, stance, movement, video_url, description
+      ) VALUES (
+        ${title}, ${map}, ${side}, ${site}, ${type}, ${mouse_click}, ${stance}, ${movement}, ${video_url}, ${description}
+      )
+    `;
+  } catch (error) {
+    console.error("Failed to submit community utility:", error);
+    return { error: "Failed to submit utility" };
+  }
+
+  redirect("/contribute?success=true");
+}
+
+export async function approveCommunityUtility(id) {
+  const session = await auth();
+  if (!session) {
+    throw new Error("Unauthorized");
+  }
+
+  try {
+    // Get the community utility
+    const { rows } = await sql`SELECT * FROM communityUtils WHERE id = ${id}`;
+    const utility = rows[0];
+
+    if (!utility) {
+      return { error: "Utility not found" };
+    }
+
+    // Insert into main utilities table
+    await sql`
+      INSERT INTO utilities (
+        title, map, side, site, type, mouse_click, stance, movement, video_url, description
+      ) VALUES (
+        ${utility.title}, ${utility.map}, ${utility.side}, ${utility.site}, 
+        ${utility.type}, ${utility.mouse_click}, ${utility.stance}, ${utility.movement}, 
+        ${utility.video_url}, ${utility.description}
+      )
+    `;
+
+    // Delete from community table
+    await sql`DELETE FROM communityUtils WHERE id = ${id}`;
+  } catch (error) {
+    console.error("Failed to approve utility:", error);
+    return { error: "Failed to approve utility" };
+  }
+
+  revalidatePath("/");
+  revalidatePath("/admin/review");
+}
+
+export async function deleteCommunityUtility(id) {
+  const session = await auth();
+  if (!session) {
+    throw new Error("Unauthorized");
+  }
+
+  try {
+    await sql`DELETE FROM communityUtils WHERE id = ${id}`;
+  } catch (error) {
+    console.error("Failed to delete community utility:", error);
+    return { error: "Failed to delete utility" };
+  }
+
+  revalidatePath("/admin/review");
+}

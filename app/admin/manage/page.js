@@ -13,11 +13,16 @@ export default async function ManagePage() {
 
     return (
         <main className="admin-container">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <h1 style={{ color: 'var(--accent-primary)' }}>GESTIONAR UTILIDADES</h1>
-                <Link href="/admin" className="add-btn">
-                    + NUEVA
-                </Link>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <Link href="/admin/review" className="btn-edit">
+                        REVISAR ({utilities.length})
+                    </Link>
+                    <Link href="/admin" className="add-btn">
+                        + NUEVA
+                    </Link>
+                </div>
             </div>
 
             <div className="utilities-table">

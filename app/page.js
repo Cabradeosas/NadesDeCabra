@@ -18,9 +18,14 @@ export default async function HomePage() {
           <div className="logo">Nades de Cabra</div>
           <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>CS2 TACTICAL LIBRARY</div>
         </div>
-        <Link href="/admin" className="add-btn">
-          + AÑADIR
-        </Link>
+        <div style={{ display: 'flex', gap: '0.75rem' }}>
+          <Link href="/contribute" className="btn-contribute">
+            CONTRIBUIR
+          </Link>
+          <Link href="/admin" className="add-btn">
+            + AÑADIR
+          </Link>
+        </div>
       </header>
 
       <GrenadeGrid initialUtilities={utilities} />
