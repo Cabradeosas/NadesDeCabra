@@ -67,11 +67,11 @@ export default function AdminPage() {
                     </div>
                     <div className="form-group">
                         <label>Movimiento</label>
-                        <select name="movement" className="form-select">
-                            <option value="None">None</option>
+                        <select name="movement" className="form-select" required>
+                            <option value="Standing">Standing</option>
                             <option value="Jumpthrow">Jumpthrow</option>
-                            <option value="W-Jumpthrow">W-Jumpthrow</option>
-                            <option value="Running">Running</option>
+                            <option value="WJumpthrow">WJumpthrow</option>
+                            <option value="Shift + w">Shift + w</option>
                         </select>
                     </div>
                 </div>
