@@ -2,6 +2,10 @@ import { sql } from "@vercel/postgres";
 import Link from "next/link";
 import { deleteUtility } from "../actions";
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function ManagePage() {
     let utilities = [];
     let pendingCount = 0;
