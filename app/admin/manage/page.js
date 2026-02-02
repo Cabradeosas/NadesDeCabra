@@ -4,11 +4,20 @@ import { deleteUtility } from "../actions";
 
 export default async function ManagePage() {
     let utilities = [];
+    let pendingCount = 0;
+
     try {
         const { rows } = await sql`SELECT * FROM utilities ORDER BY map, side, site`;
         utilities = rows;
     } catch (error) {
         console.error("Database Error:", error);
+    }
+
+    try {
+        const { rows } = await sql`SELECT COUNT(*) as count FROM communityUtils`;
+        pendingCount = parseInt(rows[0].count);
+    } catch (error) {
+        console.error("Community Utils Count Error:", error);
     }
 
     return (
@@ -17,7 +26,7 @@ export default async function ManagePage() {
                 <h1 style={{ color: 'var(--accent-primary)' }}>GESTIONAR UTILIDADES</h1>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <Link href="/admin/review" className="btn-edit">
-                        REVISAR ({utilities.length})
+                        REVISAR ({pendingCount})
                     </Link>
                     <Link href="/admin" className="add-btn">
                         + NUEVA
