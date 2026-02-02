@@ -473,6 +473,25 @@ a {
   box-shadow: 0 4px 12px var(--shadow);
 }
 
+.btn-preview {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px));
+  background: #6366f1;
+  color: white;
+}
+
+.btn-preview:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .container {
