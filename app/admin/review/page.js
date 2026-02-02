@@ -4,7 +4,7 @@ import { approveCommunityUtility, deleteCommunityUtility } from "../actions";
 export default async function ReviewPage() {
     let submissions = [];
     try {
-        const { rows } = await sql`SELECT * FROM communityUtils ORDER BY submitted_at DESC`;
+        const { rows } = await sql`SELECT * FROM communityutils ORDER BY submitted_at DESC`;
         submissions = rows;
     } catch (error) {
         console.error("Database Error:", error);

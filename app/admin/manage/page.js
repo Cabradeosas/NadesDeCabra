@@ -14,7 +14,7 @@ export default async function ManagePage() {
     }
 
     try {
-        const { rows } = await sql`SELECT COUNT(*) as count FROM communityUtils`;
+        const { rows } = await sql`SELECT COUNT(*) as count FROM communityutils`;
         pendingCount = parseInt(rows[0].count);
     } catch (error) {
         console.error("Community Utils Count Error:", error);

@@ -128,7 +128,7 @@ export async function submitCommunityUtility(formData) {
 
   try {
     await sql`
-      INSERT INTO communityUtils (
+      INSERT INTO communityutils (
         title, map, side, site, type, mouse_click, stance, movement, video_url, description
       ) VALUES (
         ${title}, ${map}, ${side}, ${site}, ${type}, ${mouse_click}, ${stance}, ${movement}, ${video_url}, ${description}
@@ -139,7 +139,7 @@ export async function submitCommunityUtility(formData) {
     return { error: "Failed to submit utility" };
   }
 
-  redirect("/contribute?success=true");
+  redirect("/");
 }
 
 export async function approveCommunityUtility(id) {
@@ -150,7 +150,7 @@ export async function approveCommunityUtility(id) {
 
   try {
     // Get the community utility
-    const { rows } = await sql`SELECT * FROM communityUtils WHERE id = ${id}`;
+    const { rows } = await sql`SELECT * FROM communityutils WHERE id = ${id}`;
     const utility = rows[0];
 
     if (!utility) {
@@ -169,7 +169,7 @@ export async function approveCommunityUtility(id) {
     `;
 
     // Delete from community table
-    await sql`DELETE FROM communityUtils WHERE id = ${id}`;
+    await sql`DELETE FROM communityutils WHERE id = ${id}`;
   } catch (error) {
     console.error("Failed to approve utility:", error);
     return { error: "Failed to approve utility" };
@@ -186,7 +186,7 @@ export async function deleteCommunityUtility(id) {
   }
 
   try {
-    await sql`DELETE FROM communityUtils WHERE id = ${id}`;
+    await sql`DELETE FROM communityutils WHERE id = ${id}`;
   } catch (error) {
     console.error("Failed to delete community utility:", error);
     return { error: "Failed to delete utility" };
