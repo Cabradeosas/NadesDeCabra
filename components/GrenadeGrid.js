@@ -18,31 +18,39 @@ export default function GrenadeGrid({ initialUtilities }) {
 
     return (
         <>
-            <section className="filters">
-                <div className="map-filters">
-                    {MAPS.map(map => (
-                        <button
-                            key={map}
-                            className={`filter-btn ${filterMap === map ? 'active' : ''}`}
-                            onClick={() => setFilterMap(map)}
-                        >
-                            {map}
-                        </button>
-                    ))}
+            <nav className="filter-navbar">
+                <div className="navbar-section">
+                    <span className="navbar-label">MAPA:</span>
+                    <div className="navbar-buttons">
+                        {MAPS.map(map => (
+                            <button
+                                key={map}
+                                className={`filter-btn ${filterMap === map ? 'active' : ''}`}
+                                onClick={() => setFilterMap(map)}
+                            >
+                                {map}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
-                <div className="side-toggle">
-                    {SIDES.map(side => (
-                        <button
-                            key={side}
-                            className={`filter-btn ${filterSide === side ? 'active' : ''}`}
-                            onClick={() => setFilterSide(side)}
-                        >
-                            {side}
-                        </button>
-                    ))}
+                <div className="navbar-divider"></div>
+
+                <div className="navbar-section">
+                    <span className="navbar-label">BANDO:</span>
+                    <div className="navbar-buttons">
+                        {SIDES.map(side => (
+                            <button
+                                key={side}
+                                className={`filter-btn ${filterSide === side ? 'active' : ''}`}
+                                onClick={() => setFilterSide(side)}
+                            >
+                                {side}
+                            </button>
+                        ))}
+                    </div>
                 </div>
-            </section>
+            </nav>
 
             <div className="grid">
                 {filtered.map(utility => (
