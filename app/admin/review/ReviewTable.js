@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import GrenadeModal from '@/components/GrenadeModal';
 
 export default function ReviewTable({ submissions, approveCommunityUtility, deleteCommunityUtility }) {
@@ -39,6 +40,9 @@ export default function ReviewTable({ submissions, approveCommunityUtility, dele
                                 >
                                     VER
                                 </button>
+                                <Link href={`/admin/review/edit/${submission.id}`} className="btn-edit">
+                                    EDITAR
+                                </Link>
                                 <form action={approveCommunityUtility.bind(null, submission.id)} style={{ display: 'inline' }}>
                                     <button type="submit" className="btn-approve">
                                         APROBAR

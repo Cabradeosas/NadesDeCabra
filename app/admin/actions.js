@@ -194,3 +194,44 @@ export async function deleteCommunityUtility(id) {
 
   revalidatePath("/admin/review");
 }
+
+export async function updateCommunityUtility(id, formData) {
+  const session = await auth();
+  if (!session) {
+    throw new Error("Unauthorized");
+  }
+
+  const title = formData.get("title");
+  const map = formData.get("map");
+  const side = formData.get("side");
+  const site = formData.get("site");
+  const type = formData.get("type");
+  const mouse_click = formData.get("mouse_click");
+  const stance = formData.get("stance");
+  const movement = formData.get("movement");
+  const video_url = formData.get("video_url");
+  const description = formData.get("description");
+
+  try {
+    await sql`
+      UPDATE communityutils SET
+        title = ${title},
+        map = ${map},
+        side = ${side},
+        site = ${site},
+        type = ${type},
+        mouse_click = ${mouse_click},
+        stance = ${stance},
+        movement = ${movement},
+        video_url = ${video_url},
+        description = ${description}
+      WHERE id = ${id}
+    `;
+  } catch (error) {
+    console.error("Failed to update community utility:", error);
+    return { error: "Failed to update utility" };
+  }
+
+  revalidatePath("/admin/review");
+  redirect("/admin/review");
+}
