@@ -22,7 +22,7 @@ body {
   overflow-x: hidden;
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Rajdhani', 'Orbitron', 'Exo 2', 'Saira Condensed', 'Teko', 'Barlow Condensed', 'Roboto Condensed', monospace;
   line-height: 1.6;
 }
 
