@@ -2,7 +2,7 @@ import { sql } from "@vercel/postgres";
 import Link from "next/link";
 import GrenadeGrid from "@/components/GrenadeGrid";
 import InfoModal from "@/components/InfoModal";
-
+import Footer from "@/components/Footer";
 export const metadata = {
   title: "Nades de Cabra | Biblioteca de Lineups CS2",
   description:
@@ -46,6 +46,7 @@ export default async function HomePage() {
       </header>
 
       <GrenadeGrid initialUtilities={utilities} />
+      <Footer />
     </main>
   );
 }
