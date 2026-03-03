@@ -7,7 +7,6 @@ export default function Footer() {
                 {/* Brand */}
                 <div className="footer-brand">
                     <div className="footer-logo">NADES DE CABRA</div>
-                    <div className="footer-tagline">CS2 TACTICAL LIBRARY</div>
                     <p className="footer-desc">
                         Proyecto independiente de la comunidad. Biblioteca gratuita de
                         lineups y utilidades para Counter-Strike 2.
@@ -51,9 +50,6 @@ export default function Footer() {
             {/* Bottom bar */}
             <div className="footer-bottom">
                 <span>© {new Date().getFullYear()} Nades de Cabra · Proyecto Comunitario</span>
-                <Link href="/aviso-legal" className="footer-bottom-link">
-                    Aviso Legal
-                </Link>
             </div>
         </footer>
     );
